@@ -40,12 +40,17 @@ def verificar_cadastro(idade, categoria, tempo_estimado, termos_aceitos):
         return "Idade não permitida para inscrição. Deve ter entre 10 e 60 anos."
 
     # Regra 2 - categoria
-    if categoria == 'infantil' and (not(idade >= 10 and idade <= 14)):
-        return "Categoria incorreta para a idade."
-    elif categoria == 'juvenil' and (not(idade >= 15 and idade <= 17)):
-        return "Categoria incorreta para a idade."
-    elif categoria == 'adulto' and (not(idade >= 18 and idade <= 60)):
-        return "Categoria incorreta para a idade."
+    if categoria == 'infantil':
+        if not (10 <= idade <= 14):
+            return "Categoria incorreta para a idade."
+    elif categoria == 'juvenil':
+        if not (15 <= idade <= 17):
+            return "Categoria incorreta para a idade."
+    elif categoria == 'adulto':
+        if not (18 <= idade <= 60):
+            return "Categoria incorreta para a idade."
+    else:
+        return "Categoria inválida."
 
     # Regra 3 - tempo estimado
     if tempo_estimado < 30 or tempo_estimado > 180:
