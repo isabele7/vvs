@@ -24,9 +24,15 @@ def test_nao_triangulo_soma_menor_b():
     
 def test_nao_triangulo_soma_menor_c():
     assert classifica_triangulo(1,10,12) == 'não é um triângulo'
-    
+
+def test_nao_triangulo_lados_negativos():
+    assert classifica_triangulo(-1,2,3) == 'não é um triângulo'
+
+def test_nao_triangulo_lados_zero():
+    assert classifica_triangulo(0,2,3) == 'não é um triângulo'
+      
 def classifica_triangulo(a, b, c):
-    if (a<(b+c) and b<(a+c) and c<(a+b)):
+    if ((a<(b+c) and b<(a+c) and c<(a+b)) and (a>0 and b>0 and c>0)):
         if (a == b and b == c and a == c):
             return 'equilátero'
         if (a == b or b == c or a == c):
